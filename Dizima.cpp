@@ -5,7 +5,7 @@
 main(){
 	
 	char escolha;
-	int parteInteira, periodo, periodoOriginal, nAlgarismosPeriodo, numerador, denominador;
+	int parteInteira, periodo, antiPeriodo, periodoOriginal, antiPeriodoOriginal, nAlgarismosPeriodo, nAlgarismosAntiPeriodo, numerador, denominador;
 
 	
 	printf("Gerador de fracao geratriz de dizima periodica\n\n");
@@ -47,7 +47,47 @@ main(){
 		printf("E : %i/%i", numerador,denominador);
 	} else if (escolha == '2'){
 		
-		printf("Composta");
+		printf("Composta\n");
+		
+		printf("Digite a parte inteira da dizima\n");
+		scanf("%i", &parteInteira);
+		printf("Digite o antiperiodo da dizima\n");
+		scanf("%i", &antiPeriodo);
+		printf("Digite o periodo da dizima\n");
+		scanf("%i", &periodo);
+		
+		periodoOriginal = periodo;
+		antiPeriodoOriginal = antiPeriodo;
+		nAlgarismosPeriodo = 0;
+		nAlgarismosAntiPeriodo = 0;
+		denominador = 0;
+				
+		while(antiPeriodo > 0) {
+			antiPeriodo /= 10;
+			nAlgarismosAntiPeriodo++;
+		}		
+		
+				
+		while(periodo > 0) {
+			periodo /= 10;
+			denominador = denominador + (9*pow(10,(nAlgarismosPeriodo + nAlgarismosAntiPeriodo)));
+			nAlgarismosPeriodo++;
+		}
+		
+
+
+		
+		numerador = ((parteInteira*pow(10,(nAlgarismosPeriodo+nAlgarismosAntiPeriodo))) + (antiPeriodoOriginal*pow(10,nAlgarismosPeriodo)) + periodoOriginal) - ((parteInteira*pow(10,nAlgarismosAntiPeriodo)) + antiPeriodoOriginal);
+		
+		for(int i = 1; i < denominador; i++){
+			if((denominador%i==0)&&(numerador%i==0)){
+				denominador = denominador / i;
+				numerador = numerador / i;
+			}
+		}
+		
+		printf("A fracao da sua dizima periodica composta %i,%i%i%i%i...\n",parteInteira,antiPeriodoOriginal,periodoOriginal,periodoOriginal,periodoOriginal);
+		printf("E : %i/%i", numerador,denominador);
 		
 	}
 	getch();
