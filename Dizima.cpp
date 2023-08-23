@@ -3,10 +3,8 @@
 #include<math.h>
 
 main(){
-	
 	char escolha;
 	int parteInteira, periodo, antiPeriodo, periodoOriginal, antiPeriodoOriginal, nAlgarismosPeriodo, nAlgarismosAntiPeriodo, numerador, denominador;
-
 	
 	printf("Gerador de fracao geratriz de dizima periodica\n\n");
 	printf("Dentre as opcoes abaixo, escolha qual tipo de dizima voce ira inserir:\n");
@@ -15,10 +13,8 @@ main(){
 	printf("Digite a sua escolha\n");
 	scanf("%c", &escolha);
 	
-	
 	if(escolha == '1') {
-		
-		printf("Simples\n");
+		printf(" \n");
 		printf("Digite a parte inteira da dizima\n");
 		scanf("%i", &parteInteira);
 		printf("Digite o periodo da dizima\n");
@@ -28,27 +24,27 @@ main(){
 		nAlgarismosPeriodo = 0;
 		denominador = 0;
 		
+		//Contador de quantidade de algarismos presentes no periodo
 		while(periodo > 0) {
 			periodo /= 10;
-			denominador = denominador + (9*pow(10,nAlgarismosPeriodo));
+			denominador += 9*pow(10,nAlgarismosPeriodo);
 			nAlgarismosPeriodo++;
 		}
 		
 		numerador = ((parteInteira*pow(10, nAlgarismosPeriodo))+periodoOriginal) - parteInteira;
 		
+		//Codigo para simplificar a fracao
 		for(int i = 1; i < denominador; i++){
 			if((denominador%i==0)&&(numerador%i==0)){
-				denominador = denominador / i;
-				numerador = numerador / i;
+				denominador /= i;
+				numerador /= i;
 			}
 		}
 		
 		printf("A fracao da sua dizima periodica simples %i,%i%i%i...\n",parteInteira,periodoOriginal,periodoOriginal,periodoOriginal);
 		printf("E : %i/%i", numerador,denominador);
 	} else if (escolha == '2'){
-		
-		printf("Composta\n");
-		
+		printf(" \n");
 		printf("Digite a parte inteira da dizima\n");
 		scanf("%i", &parteInteira);
 		printf("Digite o antiperiodo da dizima\n");
@@ -61,28 +57,27 @@ main(){
 		nAlgarismosPeriodo = 0;
 		nAlgarismosAntiPeriodo = 0;
 		denominador = 0;
-				
+			
+		//Contador de quantidade de algarismos presentes no antiperiodo	
 		while(antiPeriodo > 0) {
 			antiPeriodo /= 10;
 			nAlgarismosAntiPeriodo++;
 		}		
-		
 				
+		//Contador de quantidade de algarismos presentes no periodo
 		while(periodo > 0) {
 			periodo /= 10;
-			denominador = denominador + (9*pow(10,(nAlgarismosPeriodo + nAlgarismosAntiPeriodo)));
+			denominador += 9 * pow(10, nAlgarismosPeriodo + nAlgarismosAntiPeriodo);
 			nAlgarismosPeriodo++;
 		}
 		
-
-
-		
 		numerador = ((parteInteira*pow(10,(nAlgarismosPeriodo+nAlgarismosAntiPeriodo))) + (antiPeriodoOriginal*pow(10,nAlgarismosPeriodo)) + periodoOriginal) - ((parteInteira*pow(10,nAlgarismosAntiPeriodo)) + antiPeriodoOriginal);
 		
+		//Codigo para simplificar a fracao
 		for(int i = 1; i < denominador; i++){
 			if((denominador%i==0)&&(numerador%i==0)){
-				denominador = denominador / i;
-				numerador = numerador / i;
+				denominador /= i;
+				numerador /= i;
 			}
 		}
 		
