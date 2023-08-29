@@ -13,15 +13,11 @@ int main() {
     repetir = true;
 
 	do {
-        printf("Dentre as opcoes abaixo, escolha qual tipo de dizima voce ira inserir:\n");
-        printf("[1] - Simples\n");
-        printf("[2] - Composta\n\n");
-        printf("Digite a sua escolha\n");
+        printf("Dentre as opcoes abaixo, escolha qual tipo de dizima voce ira inserir:\n[1] - Simples\n[2] - Composta\n\nDigite a sua escolha\n");
         scanf(" %c", &escolha);
 	
 		if(escolha == '1') {
-			printf(" \n");
-			printf("Digite a parte inteira da dizima\n");
+			printf(" \nDigite a parte inteira da dizima\n");
 			scanf("%i", &parteInteira);
 			printf("Digite o periodo da dizima\n");
 			scanf("%i", &periodo);
