@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<conio.h>
 #include<math.h>
-#include <stdbool.h>
+#include<stdbool.h>
 
 int main() {
     char escolha, resp;
